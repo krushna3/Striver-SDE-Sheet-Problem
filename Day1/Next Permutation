@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+vector<int> nextPermutation(vector<int> &permutation, int n)
+{
+    int fbp,sbp;
+    for(fbp = n - 2;fbp >= 0;fbp--)
+    {
+        if(permutation[fbp] < permutation[fbp + 1])
+               break;
+    }
+    if(fbp < 0)
+        reverse(permutation.begin(),permutation.end());
+    else
+    {
+        for(sbp = n - 1;sbp > fbp;sbp--)
+        {
+            if(permutation[sbp] >  permutation[fbp])
+                break;
+        }
+        swap(permutation[sbp],permutation[fbp]);
+        reverse(permutation.begin() + fbp + 1,permutation.end());
+    }
+    return permutation;
+}

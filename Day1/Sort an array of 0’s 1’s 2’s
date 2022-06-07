@@ -1,0 +1,16 @@
+class Solution {
+public:
+    void sortColors(vector<int>& arr) 
+    {
+        int zeros = 0,ones = 0,twos = arr.size() - 1;
+        while(ones <= twos)
+        {
+           if(arr[ones] == 0)
+               swap(arr[ones++],arr[zeros++]);
+            else if(arr[ones] == 1)
+                ones++;
+            else
+                swap(arr[ones],arr[twos--]);
+        }
+    }
+};
